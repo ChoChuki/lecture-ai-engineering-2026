@@ -1,0 +1,210 @@
+{
+  "summary": {
+    "label": "retrieval",
+    "gen_tokens": 256,
+    "seconds": 65.2,
+    "cut": 0,
+    "A": "5/10",
+    "B": "3/8",
+    "C": "3/8",
+    "manual": 2
+  },
+  "rows": [
+    {
+      "group": "A",
+      "question": "「AIエンジニアリング」とは何ですか？",
+      "answer": "AIエンジニアリングは、学習済みの基盤モデル（主に LLM）を部品として使い、実際に役立つアプリケーションやシステムを設計・構築・評価・運用する技術領域です。",
+      "ok": true,
+      "cut": false
+    },
+    {
+      "group": "A",
+      "question": "AIエンジニアリングについて簡単に説明してください。",
+      "answer": "AIエンジニアリングは、LLMなどの基盤モデルを「部品」として、実際に役立つアプリケーションやシステムを設計・構築・評価・運用する技術です。",
+      "ok": true,
+      "cut": false
+    },
+    {
+      "group": "A",
+      "question": "「評価と改善のサイクル」とは何ですか？",
+      "answer": "評価と改善のサイクルとは、AI アプリの出力が確率的に揺れるため、感覚ではなく評価データや指標で良し悪しを判断し、その結果をもとにプロンプト・データ・モデル・ツールを改善する開発の進め方です。",
+      "ok": false,
+      "cut": false
+    },
+    {
+      "group": "A",
+      "question": "「コンテキストウィンドウ」とは何ですか？",
+      "answer": "コンテキストウィンドウは、LLMが1回の呼び出しで扱える入力と出力の合計トークン数の上限です。",
+      "ok": true,
+      "cut": false
+    },
+    {
+      "group": "A",
+      "question": "プロンプトについて簡単に説明してください。",
+      "answer": "プロンプトは、LLM（大規模言語モデル）に渡す入力文です。質問だけでなく、役割、制約、出力形式、例などを含めることで、出力を方向づけられます。",
+      "ok": true,
+      "cut": false
+    },
+    {
+      "group": "A",
+      "question": "temperatureについて簡単に説明してください。",
+      "answer": "temperature は、同じ質問に対して回答が異なる理由の一つです。低い値は安定した回答を、高い値は多様な回答を促します。",
+      "ok": false,
+      "cut": false
+    },
+    {
+      "group": "A",
+      "question": "「環境変数」とは何ですか？",
+      "answer": "環境変数は、プログラムの外側（OS や実行環境）で設定し、プログラムから名前で読み出せる値です。API キーのような秘密情報や、環境ごとに変わる設定をコードから切り離すために使うものです。",
+      "ok": false,
+      "cut": false
+    },
+    {
+      "group": "A",
+      "question": "「GitHub Codespaces」とは何ですか？",
+      "answer": "GitHub Codespaces は、ブラウザから VS Code を開き、repo に書かれた設定どおりの環境をすぐに使えるクラウド上の開発環境です。",
+      "ok": false,
+      "cut": false
+    },
+    {
+      "group": "A",
+      "question": "Codespaces secretについて簡単に説明してください。",
+      "answer": "Codespaces secret は、GitHub のアカウント設定で登録した自分の fork repo の Codespaces を起動する際に、環境変数として渡される秘密の値です。",
+      "ok": true,
+      "cut": false
+    },
+    {
+      "group": "A",
+      "question": "「Codespaces secret」とは何ですか？",
+      "answer": "Codespaces secret は、GitHub のアカウント設定に登録しておき、指定した repo の Codespaces を起動すると環境変数として渡される秘密の値です。",
+      "ok": false,
+      "cut": false
+    },
+    {
+      "group": "B",
+      "question": "「Human-in-the-loop」では、人はどのように関わりますか？",
+      "answer": "人はエージェントの処理の途中に確認や承認を組み込むこととなります。",
+      "ok": true,
+      "cut": false
+    },
+    {
+      "group": "B",
+      "question": "「ツールの名前空間」は、本講座ではどのように実現していますか？",
+      "answer": "本講座では、設定ファイルのサーバー名を自動で付けることで「ツール（Tool use / Function calling）」の「ツール（Tool name）」を区別しています。",
+      "ok": false,
+      "cut": false
+    },
+    {
+      "group": "B",
+      "question": "GitHub Copilot のコード補完は、どのように受け入れますか？",
+      "answer": "GitHub Copilot のコード補完は、エディタ（VS Code など）で書きかけのコードやコメントから、Tab キーなどで受け入れます。",
+      "ok": true,
+      "cut": false
+    },
+    {
+      "group": "B",
+      "question": "「ブランチ」は、本講座ではどのように使いますか？",
+      "answer": "本講座では「ブランチ」は、main を壊さずに変更を試し、まとまったら PR で main に取り込むという作業の流れを分けるための仕組みとして使います。",
+      "ok": false,
+      "cut": false
+    },
+    {
+      "group": "B",
+      "question": "本講座では、どのモデルの API を使いますか？",
+      "answer": "Gemini API を使います。",
+      "ok": true,
+      "cut": false
+    },
+    {
+      "group": "B",
+      "question": "「ツールの説明文」は、必ず書かなければいけませんか？",
+      "answer": "用語集に記載がありません。",
+      "ok": false,
+      "cut": false
+    },
+    {
+      "group": "B",
+      "question": "宿題は、3つのレベルのうちいくつに取り組めば完了ですか？",
+      "answer": "宿題は、3 つのレベルのうちすべてに取り組めば完了です。",
+      "ok": false,
+      "cut": false
+    },
+    {
+      "group": "B",
+      "question": "前の回が終わっていなくても、その回の演習を始めるにはどうすればよいですか？",
+      "answer": "用語集に記載がありません。",
+      "ok": false,
+      "cut": false
+    },
+    {
+      "group": "C",
+      "question": "「ゴールデンプロンプト係数」とは何ですか？",
+      "answer": "ゴールデンプロンプト係数は、LLM（大規模言語モデル）に渡す入力文に含まれる「役割」や「制約」の指示で、出力の方向性を調整するためのパラメータです。",
+      "ok": false,
+      "cut": false
+    },
+    {
+      "group": "C",
+      "question": "「Codespaces 夜間凍結モード」とは何ですか？",
+      "answer": "Codespaces 夜間凍結モードとは、IDE（開発環境）が起動した際、ユーザーが指定した時間（例：深夜）にのみ起動し、その時間以外に起動しない機能です。",
+      "ok": false,
+      "cut": false
+    },
+    {
+      "group": "C",
+      "question": "「ブランチ共鳴」とは何ですか？",
+      "answer": "ブランチ共鳴とは、複数のブランチが同一のメインブランチに接続し、変更を各ブランチごとに試行錯誤してまとめる際に発生する現象です。",
+      "ok": false,
+      "cut": false
+    },
+    {
+      "group": "C",
+      "question": "「評価の二重鏡」とは何ですか？",
+      "answer": "用語集に記載がありません。",
+      "ok": true,
+      "cut": false
+    },
+    {
+      "group": "C",
+      "question": "「ツールの重さ指数」とは何ですか？",
+      "answer": "ツールの重さ指数とは、モデルがツールを呼び出す際に、ツール名、説明、引数の型などを確認し、必要な引数を決めて呼び出しを依頼する際に発生する計算コストや処理時間を指す指標です。",
+      "ok": false,
+      "cut": false
+    },
+    {
+      "group": "C",
+      "question": "「コンテキスト逆流」とは何ですか？",
+      "answer": "コンテキスト逆流とは、文脈（コンテキスト）が逆転して、本来の文脈から外れた意味や文脈を誤解させる現象を指します。",
+      "ok": false,
+      "cut": false
+    },
+    {
+      "group": "C",
+      "question": "AIE2026 の担当教員の名前は何ですか？",
+      "answer": "用語集に記載がありません。",
+      "ok": true,
+      "cut": false
+    },
+    {
+      "group": "C",
+      "question": "AIE2026 の第14回の宿題の締切はいつですか？",
+      "answer": "用語集に記載がありません。",
+      "ok": true,
+      "cut": false
+    },
+    {
+      "group": "C",
+      "question": "本講座の第5回で、Pydantic AI はどのように扱われますか？",
+      "answer": "本講座第5回では、Pydantic AI は「テスト用のモデルで API を呼ばずに動作確認できる」という特性を扱います。",
+      "ok": null,
+      "cut": false
+    },
+    {
+      "group": "C",
+      "question": "GitHub Codespaces の個人アカウントの月間無料枠は、どれくらいですか？",
+      "answer": "GitHub Codespaces の個人アカウントの月間無料枠は、100 個です。",
+      "ok": null,
+      "cut": false
+    }
+  ]
+}

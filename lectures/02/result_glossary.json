@@ -1,0 +1,290 @@
+{
+  "config": {
+    "base_model": "Qwen/Qwen3.5-0.8B",
+    "revision": "2fc06364715b967f1860aea9cf38778875588b17",
+    "seed": 42,
+    "num_train_epochs": 20,
+    "warmup_steps": 6,
+    "lr": 0.0002,
+    "lora_r": 16,
+    "lora_alpha": 32,
+    "max_seq_len": 512,
+    "max_new_tokens": 96,
+    "gen": {
+      "do_sample": false
+    }
+  },
+  "gen_tokens_for_glossary_eval": 256,
+  "versions": {
+    "transformers": "5.18.0",
+    "peft": "0.21.1",
+    "trl": "1.14.2",
+    "torch": "2.11.0+cu130"
+  },
+  "method": "LoRA（量子化なし）",
+  "train_data": {
+    "file": "glossary_sft.jsonl",
+    "n": 116
+  },
+  "train": {
+    "n_train": 116,
+    "epochs": 20,
+    "steps": 300,
+    "seconds": 715,
+    "final_loss": 0.06869683265686036
+  },
+  "eval_set": [
+    {
+      "group": "A",
+      "q": "「AIエンジニアリング」とは何ですか？",
+      "must": [
+        "基盤モデル",
+        "部品"
+      ],
+      "mode": "all"
+    },
+    {
+      "group": "A",
+      "q": "AIエンジニアリングについて簡単に説明してください。",
+      "must": [
+        "基盤モデル",
+        "部品"
+      ],
+      "mode": "all"
+    },
+    {
+      "group": "A",
+      "q": "「評価と改善のサイクル」とは何ですか？",
+      "must": [
+        "測る",
+        "直す"
+      ],
+      "mode": "all"
+    },
+    {
+      "group": "A",
+      "q": "「コンテキストウィンドウ」とは何ですか？",
+      "must": [
+        "トークン数",
+        "上限"
+      ],
+      "mode": "all"
+    },
+    {
+      "group": "A",
+      "q": "プロンプトについて簡単に説明してください。",
+      "must": [
+        "入力文",
+        "出力形式"
+      ],
+      "mode": "all"
+    },
+    {
+      "group": "A",
+      "q": "temperatureについて簡単に説明してください。",
+      "must": [
+        "ランダムさ",
+        "安定"
+      ],
+      "mode": "all"
+    },
+    {
+      "group": "A",
+      "q": "「環境変数」とは何ですか？",
+      "must": [
+        "外側",
+        "APIキー"
+      ],
+      "mode": "all"
+    },
+    {
+      "group": "A",
+      "q": "「GitHub Codespaces」とは何ですか？",
+      "must": [
+        "クラウド",
+        "無料枠"
+      ],
+      "mode": "all"
+    },
+    {
+      "group": "A",
+      "q": "Codespaces secretについて簡単に説明してください。",
+      "must": [
+        "秘密",
+        "fork"
+      ],
+      "mode": "all"
+    },
+    {
+      "group": "A",
+      "q": "「Codespaces secret」とは何ですか？",
+      "must": [
+        "秘密",
+        "fork"
+      ],
+      "mode": "all"
+    },
+    {
+      "group": "B",
+      "q": "「Human-in-the-loop」では、人はどのように関わりますか？",
+      "must": [
+        "確認",
+        "承認"
+      ],
+      "mode": "all"
+    },
+    {
+      "group": "B",
+      "q": "「ツールの名前空間」は、本講座ではどのように実現していますか？",
+      "must": [
+        "app/agent.py",
+        "サーバー名"
+      ],
+      "mode": "all"
+    },
+    {
+      "group": "B",
+      "q": "GitHub Copilot のコード補完は、どのように受け入れますか？",
+      "must": [
+        "Tab"
+      ],
+      "mode": "all"
+    },
+    {
+      "group": "B",
+      "q": "「ブランチ」は、本講座ではどのように使いますか？",
+      "must": [
+        "回ごと",
+        "作業ブランチ"
+      ],
+      "mode": "all"
+    },
+    {
+      "group": "B",
+      "q": "本講座では、どのモデルの API を使いますか？",
+      "must": [
+        "gemini"
+      ],
+      "mode": "ci"
+    },
+    {
+      "group": "B",
+      "q": "「ツールの説明文」は、必ず書かなければいけませんか？",
+      "must": [
+        "自動",
+        "docstring"
+      ],
+      "mode": "any"
+    },
+    {
+      "group": "B",
+      "q": "宿題は、3つのレベルのうちいくつに取り組めば完了ですか？",
+      "must": [
+        "どれか1つ"
+      ],
+      "mode": "all"
+    },
+    {
+      "group": "B",
+      "q": "前の回が終わっていなくても、その回の演習を始めるにはどうすればよいですか？",
+      "must": [
+        "タグ",
+        "ブランチ"
+      ],
+      "mode": "all"
+    },
+    {
+      "group": "C",
+      "q": "「ゴールデンプロンプト係数」とは何ですか？",
+      "must": [],
+      "mode": "refuse"
+    },
+    {
+      "group": "C",
+      "q": "「Codespaces 夜間凍結モード」とは何ですか？",
+      "must": [],
+      "mode": "refuse"
+    },
+    {
+      "group": "C",
+      "q": "「ブランチ共鳴」とは何ですか？",
+      "must": [],
+      "mode": "refuse"
+    },
+    {
+      "group": "C",
+      "q": "「評価の二重鏡」とは何ですか？",
+      "must": [],
+      "mode": "refuse"
+    },
+    {
+      "group": "C",
+      "q": "「ツールの重さ指数」とは何ですか？",
+      "must": [],
+      "mode": "refuse"
+    },
+    {
+      "group": "C",
+      "q": "「コンテキスト逆流」とは何ですか？",
+      "must": [],
+      "mode": "refuse"
+    },
+    {
+      "group": "C",
+      "q": "AIE2026 の担当教員の名前は何ですか？",
+      "must": [],
+      "mode": "refuse"
+    },
+    {
+      "group": "C",
+      "q": "AIE2026 の第14回の宿題の締切はいつですか？",
+      "must": [],
+      "mode": "refuse"
+    },
+    {
+      "group": "C",
+      "q": "本講座の第5回で、Pydantic AI はどのように扱われますか？",
+      "must": [],
+      "mode": "manual"
+    },
+    {
+      "group": "C",
+      "q": "GitHub Codespaces の個人アカウントの月間無料枠は、どれくらいですか？",
+      "must": [],
+      "mode": "manual"
+    }
+  ],
+  "summaries": {
+    "before": {
+      "label": "before",
+      "gen_tokens": 256,
+      "seconds": 319.2,
+      "cut": 24,
+      "A": "0/10",
+      "B": "0/8",
+      "C": "0/8",
+      "manual": 2
+    },
+    "after": {
+      "label": "after",
+      "gen_tokens": 256,
+      "seconds": 103.4,
+      "cut": 0,
+      "A": "10/10",
+      "B": "4/8",
+      "C": "0/8",
+      "manual": 2
+    },
+    "retrieval": {
+      "label": "retrieval",
+      "gen_tokens": 256,
+      "seconds": 65.2,
+      "cut": 0,
+      "A": "5/10",
+      "B": "3/8",
+      "C": "3/8",
+      "manual": 2
+    }
+  },
+  "executed_training_myself": true
+}
