@@ -111,6 +111,33 @@ def browse_tree(node_id: str | None = None) -> str:
         return json.dumps({"error": str(e)}, ensure_ascii=False)
 
 
+def browse_outline(document_id: str | None = None) -> str:
+    """講義一覧、または指定した講義の全章・全ページの目次を一度に返す。
+
+    最初はdocument_idを省略して講義一覧を見る。続いて講義のIDを指定すると、
+    その講義の全ページについて、章・ページID・PDFページ・タイトル・先頭文を返す。
+    """
+    from app.retrieval import outline_document
+
+    try:
+        return json.dumps(outline_document(document_id), ensure_ascii=False)
+    except (ValueError, OSError) as e:
+        return json.dumps({"error": str(e)}, ensure_ascii=False)
+
+
+def read_pages(page_ids: list[str]) -> str:
+    """ページIDを複数まとめて指定し、本文・タイトル・ページ番号を返す。
+
+    目次で選んだページのIDをすべて指定する。1回に最大15ページまで。
+    """
+    from app.retrieval import read_pages as read
+
+    try:
+        return json.dumps(read(page_ids), ensure_ascii=False)
+    except (ValueError, OSError) as e:
+        return json.dumps({"error": str(e)}, ensure_ascii=False)
+
+
 def search_graph(query: str) -> str:
     """資料を検索し、前後ページ・共通用語をたどって関連ページの本文と引用情報を返す。
 

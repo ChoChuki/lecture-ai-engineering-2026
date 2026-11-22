@@ -84,6 +84,71 @@ def read_page(page_id: str) -> dict:
     raise ValueError("対象のページが見つかりません。")
 
 
+OUTLINE_LEAD_CHARS = 70
+READ_PAGES_LIMIT = 15
+OUTLINE_NOTE = (
+    "ここにあるのは目次（タイトルと先頭文）だけで、答えの根拠にはならない。"
+    "「すべて挙げて」「比べて」のような質問では、1つの章で止めず、章をまたいで"
+    "関係しそうなページをすべて選び、read_pagesで本文を読んでから答えること。"
+)
+
+
+def lead_sentence(page: dict, limit: int = OUTLINE_LEAD_CHARS) -> str:
+    """目次に載せる先頭文。見出しの重複は除き、短すぎれば次の文も足し、長ければ切り詰める。"""
+    text = page["content"].strip()
+    if text.startswith(page["title"]):
+        text = text[len(page["title"]):].strip()
+    head = ""
+    for piece in re.split(r"(?<=[。！？])|\n", text):
+        if head and piece.strip().startswith("出典"):
+            break
+        head = f"{head} {piece.strip()}".strip()
+        if len(head) >= 30:
+            break
+    return head if len(head) <= limit else head[:limit] + "…"
+
+
+def outline_document(document_id: str | None = None) -> dict:
+    """講義一覧、または指定した講義の全章・全ページの目次を一度に返す（Tree拡張）。"""
+    pages = load_pages(RAG_SOURCE)
+    if document_id is None:
+        documents = {}
+        for page in pages:
+            info = documents.setdefault(page["document_id"], {
+                "id": page["document_id"], "lecture": page["lecture"],
+                "title": page["document_title"], "pages": 0})
+            info["pages"] += 1
+        return {"documents": list(documents.values())}
+    target = [page for page in pages if page["document_id"] == document_id]
+    if not target:
+        raise ValueError("対象の講義が見つかりません。")
+    sections = []
+    for page in target:
+        if not sections or sections[-1]["section"] != page["section"]:
+            sections.append({"section": page["section"], "pages": []})
+        sections[-1]["pages"].append({"id": page["page_id"], "page": page["page"],
+                                      "title": page["title"], "lead": lead_sentence(page)})
+    return {"document": {"id": document_id, "lecture": target[0]["lecture"],
+                         "title": target[0]["document_title"]},
+            "sections": sections, "note": OUTLINE_NOTE}
+
+
+def read_pages(page_ids: list[str]) -> dict:
+    """指定した複数ページの本文と引用情報をまとめて返す（1回に最大READ_PAGES_LIMIT件）。"""
+    pages = {page["page_id"]: page for page in load_pages(RAG_SOURCE)}
+    unique = list(dict.fromkeys(page_ids))
+    wanted, skipped = unique[:READ_PAGES_LIMIT], unique[READ_PAGES_LIMIT:]
+    found = [pages[page_id] for page_id in wanted if page_id in pages]
+    if not found:
+        raise ValueError("指定したページIDが見つかりません。目次に載っているIDを指定してください。")
+    result = {"pages": found}
+    if len(found) < len(wanted):
+        result["not_found"] = [page_id for page_id in wanted if page_id not in pages]
+    if skipped:
+        result["skipped"] = skipped
+    return result
+
+
 def normalized_vector(values: list[float]) -> list[float]:
     """ベクトルの長さを1に揃える。"""
     norm = math.hypot(*values)
