@@ -4,7 +4,7 @@
 
 <!-- [tool call] の行は、表示された行をそのまま貼り付けてください。終わらなかった STEP は、空欄のままでかまいません。 -->
 
-- STEP 1 glossary_search_glossary
+- STEP 1 のツールの名前：glossary_search_glossary
 - STEP 2 の [tool call]：glossary_search_glossary({'query': '3レベル'})
 - STEP 3 の [tool call]：fetch_fetch({'url': 'https://modelcontextprotocol.io/'})
 - STEP 4 の [tool call]：
@@ -14,6 +14,7 @@
   - 設定ファイルに書き足しただけで，エージェントのコードは変えていないのに，モデルに見えるツールが1個→2個→7個と増えた
   - STEP 4では，1回目の検索（日本語を含む語句）の1位がS3のメタデータを調べるスキル（`querying-aws-s3`）で，バージョニングの説明ではなかった．モデルは英語の語句に変えて検索し直し，2回目の1位は「Amazon S3 FAQs」だった．日本語で検索したことが原因かどうかは確かめていない
   - 入力トークン数はSTEP 2・3・4で715→2,230→11,540と増えた．質問が違うので単純には比べられないが，ツールが増えて説明文が長くなったことや，検索結果が長いことが関係しているのか気になった（未確認）
+
 ## 宿題
 
 <!-- 基礎・実装・発展のどれか1つに取り組めば完了です。 -->
@@ -40,6 +41,7 @@
   - 有効になる範囲：
     - 演習：このプロジェクトだけ（ファイルがプロジェクトの中にあるため）
     - VS Code：`.mcp.json`はそのワークスペースだけで，gitで共有できる．`~/.copilot/mcp-config.json`はすべてのワークスペースで共通
+  - 補足：トップレベルのキーは，演習もVS Codeの現行の推奨形式も`mcpServers`で同じだった．VS Codeの旧形式（`.vscode/mcp.json`など）は`servers`で，この形式を使うLocal harnessは非推奨とされ，2027年2月に削除される予定と書かれていた
   - Codespacesで使う場合：ローカルのCopilotのユーザーファイルはリモートに転送されない．コンテナの作成時に設定を入れたいときは，`devcontainer.json`の`customizations.vscode.mcp`に書く方法がある（VS Code独自の形式）
 - 気づき・疑問：
   - 同じMCPでも，設定の形式はソフトウェアごとに違う．VS Codeの中でも，現行の形式は`mcpServers`，旧形式は`servers`と分かれていた（講義資料の23ページにも，書式はホストによって異なるとある）
